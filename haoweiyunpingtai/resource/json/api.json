@@ -1,0 +1,684 @@
+[
+	{
+		"category" : "服务访问",
+		"description" : "调用服务",
+		"method" : "POST",
+		"url" : "/service/call",
+		"parameters" : 
+			[ 
+				{
+					"name" : "accessKeyId",
+					"description" : "云平台中用户拥有的accessKeyId"
+				},
+				{
+					"name" : "service",
+					"description" : "云平台中服务的accessUrl"
+				},
+				{
+					"name" : "function",
+					"description" : "云平台中服务的某个方法的accessUrl"
+				},
+				{
+					"name" : "expires",
+					"description" : "请求过期时间，long型日期"
+				},
+				{
+					"name" : "signature",
+					"description" : "生成签名字符串"
+				},
+				{
+					"name" : "其他服务所需参数",
+					"description" : "请传json字符串"
+				}
+			]
+	},
+	{
+		"category" : "服务",
+		"description" : "给服务实例添加AccessKey",
+		"method" : "POST",
+		"url" : "/services/instance/{id}/key/add"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取所有服务类型",
+		"method" : "GET ",
+		"url" : "/services/template/list"
+	},
+	{
+		"category" : "服务",
+		"description" : "试用服务",
+		"method" : "POST",
+		"url" : "/services/template/{id}/try",
+		"parameters" : 
+			[ 
+				{
+					"name" : "instanceName",
+					"description" : "实例名称"
+				},
+				{
+					"name" : "appId",
+					"description" : "App ID"
+				}
+			]
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户某个类型的所有服务实例",
+		"method" : "GET",
+		"url" : "/services/template/{id}/instance/list"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户已开通的服务类型",
+		"method" : "GET",
+		"url" : "/services/template/getPaidList"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户未开通的服务类型",
+		"method" : "GET",
+		"url" : "/services/template/getUnpaidList"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取服务类型详细信息",
+		"method" : "GET",
+		"url" : "/services/template/{id}/detail"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户的所有服务实例",
+		"method" : "GET",
+		"url" : "/services/instance/list"
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户的某个服务实例详情",
+		"method" : "GET",
+		"url" : "/services/instance/{id}/detail"
+	},
+	{
+		"category" : "服务",
+		"description" : "停用某个服务实例",
+		"method" : "POST",
+		"url" : "/services/instance/{id}/disable"
+	},
+	{
+		"category" : "服务",
+		"description" : "停用多个服务实例",
+		"method" : "POST",
+		"url" : "/services/instance/disable",
+		"parameters" : 
+			[ 
+				{
+					"name" : "ids",
+					"description" : "多个实例ID csv格式字符串"
+				}
+			]
+	},
+	{
+		"category" : "服务",
+		"description" : "启用某个服务实例",
+		"method" : "POST",
+		"url" : "/services/instance/{id}/enable"
+	},
+	{
+		"category" : "服务",
+		"description" : "启用多个服务实例",
+		"method" : "POST",
+		"url" : "/services/instance/enable",
+		"parameters" : 
+			[ 
+				{
+					"name" : "ids",
+					"description" : "多个实例ID csv格式字符串"
+				}
+			]
+	},
+	{
+		"category" : "服务",
+		"description" : "获取当前用户的某个服务实例的AccessKey列表",
+		"method" : "GET",
+		"url" : "/services/instance/{id}/key/list"
+	},
+	{
+		"category" : "服务",
+		"description" : "删除某个AccessKey",
+		"method" : "POST",
+		"url" : "/services/instance/key/{token}/delete"
+	},
+	{
+		"category" : "服务",
+		"description" : "禁用某个AccessKey",
+		"method" : "POST",
+		"url" : "/services/instance/key/{token}/disable"
+	},
+	{
+		"category" : "服务",
+		"description" : "启用某个AccessKey",
+		"method" : "POST",
+		"url" : "/services/instance/key/{token}/enable"
+	},
+	{
+		"category" : "用户",
+		"description" : "用户注册",
+		"method" : "POST",
+		"url" : "/users/register",
+		"parameters" : 
+			[ 
+				{
+					"name" : "email",
+					"description" : "注册邮箱"
+				},
+				{
+					"name" : "password",
+					"description" : "密码"
+				},
+				{
+					"name" : "isCompany",
+					"required" : "false",
+					"description" : "是否公司用户"
+				},
+				{
+					"name" : "companyName",
+					"required" : "false",
+					"description" : "公司名称"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "用户登录",
+		"method" : "POST",
+		"url" : "/users/login",
+		"parameters" : 
+			[ 
+				{
+					"name" : "email",
+					"description" : "注册邮箱"
+				},
+				{
+					"name" : "password",
+					"description" : "密码"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "用户退出",
+		"method" : "POST",
+		"url" : "/users/logout"
+	},
+	{
+		"category" : "用户",
+		"description" : "检查email是否可用",
+		"method" : "GET",
+		"url" : "/users/checkEmail",
+		"parameters" : 
+			[ 
+				{
+					"name" : "email",
+					"description" : "邮箱"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "检查nick name是否可用",
+		"method" : "GET",
+		"url" : "/users/checkNickName",
+		"parameters" : 
+			[ 
+				{
+					"name" : "nickName",
+					"description" : "昵称"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "检查phone是否可用",
+		"method" : "GET",
+		"url" : "/users/checkPhone",
+		"parameters" : 
+			[ 
+				{
+					"name" : "phone",
+					"description" : "手机号码"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "修改用户信息",
+		"method" : "POST",
+		"url" : "/users/update",
+		"parameters" : 
+			[ 
+				{
+					"name" : "nickName",
+					"description" : "昵称"
+				},
+				{
+					"name" : "phone",
+					"description" : "手机号码"
+				},
+				{
+					"name" : "companyName",
+					"description" : "公司名称"
+				},
+				{
+					"name" : "companyWebsite",
+					"description" : "公司网站"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "找回密码",
+		"method" : "GET",
+		"url" : "/users/findPassword",
+		"parameters" : 
+			[ 
+				{
+					"name" : "email",
+					"description" : "注册邮箱"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "登录用户修改密码",
+		"method" : "POST",
+		"url" : "/users/changePassword",
+		"parameters" : 
+			[ 
+				{
+					"name" : "oldPassword",
+					"description" : "旧密码"
+				},
+				{
+					"name" : "newPassword",
+					"description" : "新密码"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "通过密码找回功能修改密码",
+		"method" : "POST",
+		"url" : "/users/changePasswordViaFinding",
+		"parameters" : 
+			[ 
+				{
+					"name" : "oldPassword",
+					"description" : "旧密码"
+				},
+				{
+					"name" : "newPassword",
+					"description" : "新密码"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "获取所有用户列表",
+		"method" : "GET",
+		"url" : "/users/admin/list",
+		"parameters" : 
+			[ 
+				{
+					"name" : "page",
+					"required" : "false",
+					"description" : "当前页码"
+				},
+				{
+					"name" : "limit",
+					"required" : "false",
+					"description" : "每页显示记录数"
+				},
+				{
+					"name" : "sortBy",
+					"required" : "false",
+					"description" : "排序字段"
+				},
+				{
+					"name" : "order",
+					"required" : "false",
+					"description" : "排序方式，ASC/DESC"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "创建管理员",
+		"method" : "POST",
+		"url" : "/users/admin/create",
+		"parameters" : 
+			[ 
+				{
+					"name" : "email",
+					"description" : "邮箱"
+				},
+				{
+					"name" : "password",
+					"description" : "密码"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "禁用某个用户",
+		"method" : "POST",
+		"url" : "/users/admin/disable",
+		"parameters" : 
+			[ 
+				{
+					"name" : "userIds",
+					"description" : "用户ID csv格式字符串"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "启用某个用户",
+		"method" : "POST",
+		"url" : "/users/admin/enable",
+		"parameters" : 
+			[ 
+				{
+					"name" : "userIds",
+					"description" : "用户ID csv格式字符串"
+				}
+			]
+	},
+	{
+		"category" : "用户",
+		"description" : "获取某个用户所有服务实例",
+		"method" : "GET",
+		"url" : "/users/{id}/instance/list"
+	},
+	{
+		"category" : "系统",
+		"description" : "获取云平台当前版本号",
+		"method" : "GET",
+		"url" : "/system/version"
+	},
+	{
+		"category" : "缓存",
+		"description" : "获取所有缓存信息",
+		"method" : "GET",
+		"url" : "system/caches/list"
+	},
+	{
+		"category" : "缓存",
+		"description" : "获取某个缓存所有数据信息",
+		"method" : "GET",
+		"url" : "/system/caches/detail",
+		"parameters" : 
+			[ 
+				{
+					"name" : "name",
+				   "description":""
+				}
+			]
+	},
+	{
+		"category" : "缓存",
+		"description" : "重新加载某个缓存的数据",
+		"method" : "GET",
+		"url" : "/system/caches/reload",
+		"parameters" : 
+			[ 
+				{
+					"name" : "name",
+				  	"description":""
+				}
+			]
+	},
+	{
+		"category" : "缓存",
+		"description" : "重新加载所有缓存的数据",
+		"method" : "GET",
+		"url" : "/system/caches/reloadAll"
+	},
+	{
+		"category" : "缓存",
+		"description" : "查询指定缓存中某个key对应的数据",
+		"method" : "GET",
+		"url" : "/system/caches/getValue",
+		"parameters" : 
+			[
+			  {
+				"name": "cacheName",
+				"description":""
+			  },
+			  {
+					"name" : "key",
+					"description":""
+				}
+			]
+	},
+	{
+		"category" : "缓存",
+		"description" : "将某个key对应的数据从指定缓存中移除",
+		"method" : "GET",
+		"url" : "/system/caches/remove",
+		"parameters" : 
+			[
+			  {
+				"name": "cacheName",
+				"description":""
+			  },
+			  {
+					"name" : "key",
+					"description":""
+				}
+			]
+	},
+	{
+		"category" : "消息",
+		"description" : "获取当前用户所有消息列表",
+		"method" : "GET",
+		"url" : "/messages/listAll"
+	},
+	{
+		"category" : "消息",
+		"description" : "获取当前用户已读消息列表",
+		"method" : "GET",
+		"url" : "/messages/listRead"
+	},
+	{
+		"category" : "消息",
+		"description" : "获取当前用户未读消息列表",
+		"method" : "GET",
+		"url" : "/messages/listUnRead"
+	},
+	{
+		"category" : "消息",
+		"description" : "获取当前用户未读消息总数",
+		"method" : "GET",
+		"url" : "/messages/getUnReadNum"
+	},
+	{
+		"category" : "消息",
+		"description" : "查看当前用户的某消息详情",
+		"method" : "GET",
+		"url" : "/messages/{id}/detail"
+	},
+	{
+		"category" : "消息",
+		"description" : "将一条或多条消息标记为已读",
+		"method" : "POST",
+		"url" : "/messages/markAsRead",
+		"parameters" : 
+			[ 
+				{
+					"name" : "ids",
+				  "description":""
+				}
+			]
+	},
+	{
+		"category" : "消息",
+		"description" : "将当前用户所有消息标记为已读",
+		"method" : "POST",
+		"url" : "/messages/markAllAsRead"
+	},
+	{
+		"category" : "消息",
+		"description" : "删除某条消息",
+		"method" : "POST",
+		"url" : "/messages/{id}/delete"
+	},
+	{
+		"category" : "消息",
+		"description" : "删除一条或多条消息",
+		"method" : "POST",
+		"url" : "/messages/delete",
+		"parameters" : 
+			[ 
+				{
+					"name" : "ids"
+				}
+			]
+	},
+	{
+		"category" : "消息",
+		"description" : "删除当前用户的所有消息",
+		"method" : "POST",
+		"url" : "/messages/deleteAll"
+	},
+	{
+		"category" : "消息",
+		"description" : "给指定的一个活多个用户发送消息",
+		"method" : "POST",
+		"url" : "/messages/admin/send",
+		"parameters" : 
+			[
+			  {
+				"name": "message",
+				"description":""
+			  },
+			  {
+					"name" : "userIds",
+					"description":""
+				}
+			]
+	},
+	{
+		"category" : "消息",
+		"description" : "给所有用户发送消息",
+		"method" : "POST",
+		"url" : "/messages/admin/sendToAll",
+		"parameters" : 
+			[ 
+				{
+					"name" : "message",
+				  	"description":""
+				}
+			]
+	},
+	{
+		"category" : "消息",
+		"description" : "获取所有广播通知",
+		"method" : "POST",
+		"url" : "/messages/admin/listPublic"
+	},
+	{
+		"category" : "消息",
+		"description" : "撤销发送某条通知",
+		"method" : "POST",
+		"url" : "/messages/admin/{id}/recall"
+	},
+	{
+		"category" : "消息类型",
+		"description" : "获取所有消息类型列表",
+		"method" : "POST",
+		"url" : "/messageCatagories/admin/listAll"
+	},
+	{
+		"category" : "消息类型",
+		"description" : "获取某个消息类型详情",
+		"method" : "POST",
+		"url" : "/messageCatagories/admin/{id}/detail"
+	},
+	{
+		"category" : "消息类型",
+		"description" : "创建新的消息类型",
+		"method" : "POST",
+		"url" : "/messageCatagories/admin/create",
+		"parameters" : 
+			[ 
+				{
+					"name" : "messageCatagory",
+				  	"description":"messageCatagory Json字符串"
+				}
+			]
+	},
+	{
+		"category" : "消息类型",
+		"description" : "删除某个消息类型",
+		"method" : "POST",
+		"url" : "/messageCatagories/admin/{id}/delete"
+	},
+	{
+		"category" : "消息类型",
+		"description" : "修改消息类型",
+		"method" : "POST",
+		"url" : "/messageCatagories/admin/{id}/update",
+		"parameters" : 
+			[
+			  {
+				"name" : "name",
+				"description":""
+			  },
+			  {
+				"name": "desc",
+				"description":""
+			  }
+			]
+	},
+	{
+		"category" : "消息App客户端",
+		"description" : "注册消息接收App客户端",
+		"method" : "POST",
+		"url" : "/app/register",
+		"parameters" : 
+			[
+			  {
+				"name" : "appId",
+				"description":""
+			  },
+			  {
+				"name": "clientId",
+				"description":""
+			  },
+			  {
+				"name" : "userId",
+				"description":""
+			  }
+			]
+	},
+	{
+		"category" : "消息App客户端",
+		"description" : "注销消息接收App客户端",
+		"method" : "POST",
+		"url" : "/app/deRegister",
+		"parameters" : 
+			[ 
+				{
+					"name" : "appId",
+				  "description":""
+			  },
+			  {
+				"name": "clientId",
+				"description":""
+			  },
+			  {
+					"name" : "userId",
+				"description":""
+				}
+			]
+	}
+]

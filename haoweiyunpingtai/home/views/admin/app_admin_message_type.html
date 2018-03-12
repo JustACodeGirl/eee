@@ -1,0 +1,147 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.settings.hideAside = false;
+  app.settings.hideFooter = true;
+ divshow=false;
+ createMessage=false;
+ editMessage=false;
+  " ng-controller="adminMsType">
+  <div class="col bg-white-only">
+    <div class="">
+      <div class="panel panel-default no-border">
+        <div class="panel-body">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_1"
+                  style="float:right; margin-top:50px; margin-right:90px" ng-click="createMessagetype(item)">新增
+          </button>
+          <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="panel-default">
+                    <div class="panel-body">
+
+                      <div class="line"></div>
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label">名称:</label>
+
+                        <div class="col-sm-9">
+                          <input type="text"
+                                 class="form-control"
+                                 ng-model="name"
+                                 required="">
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label">描述:</label>
+
+                        <div class="col-sm-9">
+                          <input type="text"
+                                 class="form-control"
+                                 ng-model="desc"
+                                 required="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    取消
+                  </button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveMessageType()">
+                    保存
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table m-b-none m-l-xxl w-modify tbs">
+            <thead>
+            <tr>
+              <!--<th class="w-lg">ID</th>-->
+              <th class="w-lg">名称</th>
+              <th class="w-lg">描述</th>
+              <th class="w-lg">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items">
+              <!--<td class="text-limit w-sm" >{{item.id}}</td>-->
+              <td class="text-limit w-sm">{{item.name}}</td>
+              <td class="text-limit w-lg">{{item.desc}}</td>
+              <td>
+                <div class="btn-group w-xsm">
+                  <button class="btn btn-xs btn-primary " data-toggle="modal" data-target="#myModal_2" ng-click="showUpdateDialog(item)">编辑</button>
+
+                  <button class="btn btn-xs btn-primary pull-right"
+                          ng-click="removeItem(item)">删除
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_2"
+                 aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class=" panel-default">
+                      <div class="panel-body">
+                        <div class="line"></div>
+                        <div class="form-group" style="display: none">
+                          <label class=" col-sm-3 control-label">ID</label>
+                          <div class="col-sm-9">
+                            <input  id="catagoryId" type="text"
+                                    class="form-control ng-pristine ng-untouched"
+                                    name="catagoryId" ng-model="item.id" placeholder=""
+                                    required="">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">名称:</label>
+
+                          <div class="col-sm-9">
+                            <input id="catagoryName" type="text"
+                                   class="form-control ng-pristine ng-untouched"
+                                   name="catagoryName" ng-model="item.name" placeholder=""
+                                   required="">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">描述:</label>
+
+                          <div class="col-sm-9">
+                            <input  id="catagoryDesc" type="text"
+                                   class="form-control ng-pristine ng-untouched"
+                                   name="catagoryDesc" ng-model="item.desc" placeholder=""
+                                   required="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                      取消
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="editMessageType(item)">
+                      保存
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

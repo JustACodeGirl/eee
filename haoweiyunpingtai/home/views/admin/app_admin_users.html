@@ -1,0 +1,228 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.settings.hideAside = false;
+  app.settings.hideFooter = true;
+  " ng-controller="AdminUsersCtrl">
+
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+      <div class="wrapper-xs b-b">
+        <div class="input-group m-b-xxs">
+          <span class="input-group-addon input-sm no-border no-bg">
+            <i class="icon-magnifier text-md m-t-xxs"></i>
+          </span>
+          <input type="text"
+                 class="form-control input-sm no-border no-bg text-md"
+                 placeholder="搜索所有用户"
+                 ng-model="query">
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="m-t-n-xxs">
+              <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                <a ng-repeat="userItem in usersList | filter:query | orderBy:'email'"
+                   class="h-list-item list-group-item m-l"
+                   ng-class="{'select m-l-none': userItem.selected }"
+                   ng-click="selectItem(userItem)">
+                  <span class=" col-md-10 block text-ellipsis m-l-n text-md"
+                        ng-class="{'m-l-none': userItem.selected }">
+                    {{ userItem.email }}
+                    <span ng-hide="userItem.email">NULL</span>
+                  </span>
+                  <span class="col-md-2 block text-ellipsis m-l-n text-md">
+                    <i class=" fa fa-user-md"
+                       ng-class="(userItem.activeState == 'INACTIVE') ? 'text-dark':((userItem.role == 'ADMIN') ? 'text-danger':'text-green')"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(usersList | filter:query).length">暂无用户
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t text-center">
+        <a href class="btn btn-sm btn-default btn-addon" ng-click="createAdmin = true">
+          <i class="fa fa-plus fa-fw m-r-xs"></i>
+          新建管理员
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col bg-white-only">
+    <div class="" ng-hide="createAdmin">
+      <div class="panel panel-default no-border">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="wrapper-lg">
+              <div class="hbox h-auto m-b-lg">
+                <div class="col text-center m-l-lg w-sm">
+                  <div class="thumb-lg avatar inline">
+                    <img src="/resource/img/a0.jpg">
+                  </div>
+                </div>
+                <div class="col v-middle h1 font-thin">
+                  <div ng-hide="userItem.editing" class="m-l-lg">{{userItem.email}}</div>
+                  <div>
+                    <a class="btn btn-xs btn-default m-l-lg"
+                       ng-hide="!userItem"
+                       ng-click="changeUserState(userItem)">{{userItem.activeState=="ACTIVE" ? "禁用":"启用"}}
+                    </a>
+                    <a class="btn btn-xs btn-default" ng-hide="userItem.editing" ng-click="editItem(userItem)">编辑</a>
+                    <a class="btn btn-xs btn-default" ng-show="userItem.editing" ng-click="doneEditing(userItem)">完成</a>
+                  </div>
+                </div>
+              </div>
+              <!-- fields -->
+              <div class="form-horizontal">
+                <div class="form-group m-b-sm" ng-hide="!userItem.nickName && !userItem.editing">
+                  <label class="col-sm-3 control-label">昵称</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="userItem.editing">{{userItem.nickName}}</p>
+                    <input type="text" class="form-control" ng-show="item.editing" ng-model="item.nickName">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!userItem.phone && !userItem.editing">
+                  <label class="col-sm-3 control-label">手机</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="userItem.editing">{{userItem.phone}}</p>
+                    <input type="text" class="form-control" ng-show="userItem.editing" ng-model="item.mobile">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!userItem.companyName && !userItem.editing">
+                  <label class="col-sm-3 control-label">公司名称</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="userItem.editing">{{userItem.companyName}}</p>
+                    <input type="text" class="form-control" ng-show="userItem.editing" ng-model="item.companyName">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!userItem.companyWebsite && !userItem.editing">
+                  <label class="col-sm-3 control-label">公司</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="userItem.editing">{{userItem.companyWebsite}}</p>
+                    <input type="text" class="form-control" ng-show="userItem.editing" ng-model="item.companyWebSite">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!userItem.note && !userItem.editing">
+                  <label class="col-sm-3 control-label">备注</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="userItem.editing">{{userItem.note}}</p>
+                    <textarea class="form-control"
+                              ng-show="userItem.editing"
+                              ng-model="userItem.note"
+                              rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- / fields -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default no-border" ng-hide="userItem.role == 'ADMIN' ? true : false">
+        <div class="panel-body">
+          <table class="table m-b-none m-l-xxl w-modify">
+            <thead class="">
+            <tr>
+              <th class="w-sm">实例名</th>
+              <th class="w-lg">APPId</th>
+              <th class="w-sm">状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="instanceInfo in userInstancesInfo track by $index">
+              <td class="text-limit w-md">{{instanceInfo.name}}</td>
+              <td class="text-limit w-md">{{instanceInfo.appId}}</td>
+              <td>
+                <div class="btn-group w-sm" ng-init="radioModel = instanceInfo.activeState">
+                  <label class="btn btn-xs {{(instanceInfo.activeState == 'ACTIVE') ? 'btn-info active':'btn-default'}}"
+                         ng-model="radioModel"
+                         btn-radio="ACTIVE"
+                         ng-click="changeInstanceStausByAdmin(true,instanceInfo)">
+                    <i class="fa fa-check text-active"></i>
+                    启 用
+                  </label>
+                  <label class="btn btn-xs {{(instanceInfo.activeState == 'INACTIVE') ? 'btn-info active':'btn-default'}}"
+                         ng-model="radioModel"
+                         btn-radio="INACTIVE"
+                         ng-click="changeInstanceStausByAdmin(false,instanceInfo)">
+                    <i class="fa fa-check text-active"></i>
+                    停 用
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <tr ng-hide="userInstancesInfo.length">
+              <td class="text-limit w-md">暂无实例</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="m-b-lg m-t-lg container wrapper-lg w-xxl" ng-hide="!createAdmin">
+      <div class="wrapper text-center m-t-lg">
+        <strong>豪威云平台管理员创建</strong>
+      </div>
+      <form name="form" class="form-validation m-t-lg">
+        <div class="list-group list-group-sm">
+          <div class="list-group-item">
+            <input type="email"
+                   placeholder="邮箱"
+                   name="email"
+                   id="email"
+                   class="form-control no-border"
+                   ng-model="email"
+                   ng-blur="isEmailInputOver = 1"
+                   ng-focus="isEmailInputOver = 0"
+                   required>
+            <span class="glyphicon glyphicon-ok form-control-feedback"
+                  ng-show='form.email.$dirty && form.email.$valid'></span>
+          </div>
+          <div class="list-group-item">
+            <input type="password"
+                   name="password"
+                   id="password"
+                   placeholder="密码"
+                   class="form-control no-border"
+                   ng-model="password"
+                   ng-minlength="6"
+                   ng-maxlength="20"
+                   ng-change="checkPasswdFormat(0)"
+                   required>
+            <span class="text-danger form-control-spin" ng-show='form.password.$dirty && form.password.$invalid'>长度6到20位
+            </span>
+          </div>
+          <div class="list-group-item">
+            <input type="password"
+                   name="repeatPassword"
+                   id="repeatPassword"
+                   placeholder="确认密码"
+                   class="form-control no-border"
+                   ng-model="repeatPassword"
+                   ng-change="checkPasswdFormat(1)"
+                   repeat-password="password"
+                   required>
+            <span class="glyphicon glyphicon-remove form-control-feedback"
+                  ng-show='form.repeatPassword.$dirty && form.repeatPassword.$error.dontmatch'></span>
+          </div>
+        </div>
+        <button type="submit"
+                class="btn btn-lg btn-primary btn-block"
+                ng-click="createAdminUser()"
+                ng-disabled='form.$invalid'>确 定
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- /column -->
+</div><!-- /hbox layout -->

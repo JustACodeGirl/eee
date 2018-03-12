@@ -1,0 +1,20 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MessageCtrl">
+  <div class="col w-md bg-light dk b-r bg-auto">
+    <div class="wrapper b-b bg">
+      <a class="font-bold" ng-bind="'nav.user.MESSAGECENTER'|T"></a>
+    </div>
+    <div class="wrapper hidden-sm hidden-xs" id="message-menu">
+      <ul class="nav nav-pills nav-stacked nav-sm">
+        <li ng-repeat="fold in folds" ui-sref-active="active">
+          <a ui-sref="app.message.list({fold:fold.filter})" >
+            <span ng-bind="fold.name"></span>
+            <b class="badge bg-danger pull-right" ng-show="(fold.filter == 'unread') && (unReadNum > 0)">{{unReadNum}}</b>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div ui-view></div>
+  </div>
+</div>

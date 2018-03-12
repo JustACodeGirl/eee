@@ -1,0 +1,54 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.settings.hideAside = false;
+  app.settings.hideFooter = true;
+ divshow=false;
+  " ng-controller="AdminToolinfoCtrl">
+
+    <div class="col bg-white-only">
+        <div class="">
+            <div class="panel panel-default no-border">
+                <div class="panel-body">
+                    <table class="table m-b-none m-l-xxl w-modify tbs" >
+                        <caption class="ckey">名称：{{app.admin.cacheInfo.key}}</caption>
+                      <button  ng-click="viewItem(app.admin.cacheInfo)" style="float:right; margin-top:50px; margin-right:90px">刷新</button>
+                      <button ui-sref="app.admin_management_tool" style="float:right; margin-top:50px; margin-right:10px">返回</button>
+                        <thead class="">
+                        <tr>
+                            <th class="w-lg">Key</th>
+                            <th class="w-lg">value</th>
+                            <th class="w-lg">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <div class="input-group m-b-xxs">
+                            <span class="input-group-addon input-sm no-border no-bg"><i class="icon-magnifier text-md m-t-xxs"></i></span>
+                            <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="key" ng-model="query">
+                        </div>
+                        <tr ng-repeat="cacheDetail in app.admin.cacheDetails | filter:query | orderBy:'key'" >
+                            <!--<td>{{$index + 1}}</td>-->
+                            <td class="text-limit w-sm" id="myselect" >{{cacheDetail.key}}</td>
+                            <td class="text-limit w-lg li1"   onclick="this.className='li2'" onmouseout="this.className='li1'">{{cacheDetail.value}}</td>
+                            <td>
+                                <div class="btn-group w-xsm">
+                                    <label class="btn btn-xs btn-primary"
+                                           ng-click="removeItem(app.admin.cacheInfo.key,cacheDetail);"><i class="fa fa-check text-active" ></i>remove</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-hide="app.admin.cacheArray.length"><td class="text-limit w-md">暂无实例</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: yellow" ng-bid="divshow">
+        {{cacheDetail.value}}
+    </div>
+    <!-- /column -->
+</div>
+<!-- /hbox layout -->

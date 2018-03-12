@@ -1,0 +1,46 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.settings.hideAside = false;
+  app.settings.hideFooter = true;
+  divShow = true;
+  " ng-controller="AdminToolCtrl">
+
+    <div class="col bg-white-only">
+        <div class="">
+            <div class="panel panel-default no-border">
+                <div class="panel-body">
+                    <table class="table m-b-none m-l-xxxl w-modify">
+                        <thead class="">
+                        <tr>
+                            <th class="w-sm">名称</th>
+                            <th class="w-lg">数据总数</th>
+                            <th class="w-sm">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr ng-repeat="cacheInfo in app.admin.cacheArray|orderBy:'value' ">
+                            <td class="text-limit w-md">{{cacheInfo.key}}</td>
+                            <td class="text-limit w-md">{{cacheInfo.value}}</td>
+
+                            <td>
+                                <div class="btn-group w-xsm">
+                                    <label class="btn btn-xs btn-primary"
+                                           ng-click="viewItem(cacheInfo);"><i class="fa fa-check text-active" ></i>View</label>
+                                    <label class="btn btn-xs btn-primary pull-right"
+                                           ng-click="reloadItem(cacheInfo)"><i class="fa fa-check text-active"></i>Reload</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-hide="app.admin.cacheArray.length"><td class="text-limit w-md">暂无实例</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+</div>
+<!-- /hbox layout -->

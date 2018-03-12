@@ -1,0 +1,95 @@
+a {
+  color: black;
+}
+
+.leftsidebar_box {
+  width: 220px;
+  overflow: visible !important;
+  position: fixed;
+  height: 100% !important;
+  margin-top:20px;
+  border-right: 1px solid rgb(217, 217, 221);
+}
+.leftsidebar_box dt {
+  padding-left: 60px;
+  padding-right: 10px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #000;
+  /*background-color:#B5B5B5;*/
+  font-size: 16px;
+  position: relative;
+  line-height: 42px;
+  cursor: pointer;
+  font-weight: normal;
+
+}
+
+.leftsidebar_box dd {
+  /*background-color:#317eb4;*/
+  padding-left: 60px;
+  font-size: 14px;
+}
+
+.leftsidebar_box dd a {
+  line-height: 36px;
+}
+
+.leftsidebar_box dt img {
+  position: absolute;
+  right: 165px;
+  top: 14px;
+}
+
+.system_log dt {
+  background-image: url(images/left/system.png)
+}
+
+.custom dt {
+  background-image: url(images/left/custom.png)
+}
+
+.channel dt {
+  background-image: url(images/left/channel.png)
+}
+
+.app dt {
+  background-image: url(images/left/app.png)
+}
+
+.cloud dt {
+  background-image: url(images/left/cloud.png)
+}
+
+.syetem_management dt {
+  background-image: url(images/left/syetem_management.png)
+}
+
+.source dt {
+  background-image: url(images/left/source.png)
+}
+
+.statistics dt {
+  background-image: url(images/left/statistics.png)
+}
+
+.leftsidebar_box dl dd:last-child {
+  /*padding-bottom:10px;*/
+}
+
+.leftsidebar_box dt:hover, .leftsidebar_box dt:active {
+  text-decoration: none;
+  color: white;
+  background-color: #0070cc;
+
+}
+
+.leftsidebar_box dd:hover > a, .leftsidebar_box dd:active > a {
+  text-decoration: none;
+  color: white;
+}
+
+.leftsidebar_box dd:hover, .leftsidebar_box dd:active {
+  background-color: #0070cc;
+}
+

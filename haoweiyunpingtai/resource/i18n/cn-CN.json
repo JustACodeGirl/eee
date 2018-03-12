@@ -1,0 +1,158 @@
+{
+  "虹膜识别": "虹膜识别",
+  "智能家居": "智能家居",
+  "智能车载": "智能车载",
+  "header": {
+    "APPNAME": "豪威云平台",
+    "BACK": "返回首页",
+    "USERCENTER": "用户中心",
+    "admin": {
+      "TITLE": "管理员中心",
+      "LOGOUT": "退出"
+    },
+    "notify": {
+      "NOTIFY": "通知",
+      "TITLE_START": "您有",
+      "SEE_ALL": "查看所有通知"
+    },
+    "userinfo": {
+      "USERCENTER": "个人中心",
+      "LOGOUT": "退出"
+    }
+  },
+  "nav": {
+    "services": {
+      "TITLE": "服务"
+    },
+    "user": {
+      "TITLE": "用户",
+      "USERINFO": "基本信息",
+      "MESSAGECENTER": "消息中心"
+    },
+    "admin": {
+      "servicesmanage": {
+        "TITLE": "服务管理"
+      },
+      "usermanage": {
+        "TITLE": "用户管理"
+      },
+      "managetool": {
+        "TITLE": "管理工具",
+        "CACHE": "缓存",
+        "TYPE":"消息类型"
+      }
+    }
+  },
+  "main": {
+    "usercenter": {
+      "WELCOME": "欢迎来到豪威云平台!",
+      "NOTIFY": "通知",
+      "BALANCE": "余额",
+      "SERVICEUSE": "使用中的服务",
+      "SERVICENOTUSE": "未使用的服务",
+      "DETAIL": "详情",
+      "TRIAL": "试用"
+    },
+    "userinfo": {
+      "overview": {
+        "HEADER": "信息预览",
+        "EMAIL": "邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:",
+        "MODIFYPASSWD": "修改密码",
+        "NICKNAME": "用户昵称:",
+        "PHONE": "手机号码:",
+        "COMPANYNAME": "单位名称:",
+        "COMPANYWEBSITE": "单位网址:",
+        "REGISTERTIME": "注册时间:"
+      },
+      "basicinfo": {
+        "HEADER": "基本信息",
+        "useridentity": {
+          "NAME": "用户身份:",
+          "PERSONAL": "个人",
+          "COMPANY": "企业/政府（含企业、政府、事业单位、团体、组织）"
+        },
+        "NICKNAME": "用户昵称:",
+        "PHONE": "手机:",
+        "COMPANYNAME": "单位名称:",
+        "COMPANYNAMETIP": "请务必准确填写单位名称，提交后不能更改。实名认证后，此处将被替换为实名认证使用的单位名称。",
+        "COMPANYWEBSITE": "单位网址:",
+        "SUBMIT": "保 存"
+      },
+      "BUSIINFO": "业务信息"
+    },
+    "modifypasswd": {
+      "TITLE": "豪威云平台",
+      "step1": {
+        "HEADER": "修 改 密 码",
+        "TIP": "请输入登录密码和新的密码完成修改",
+        "OLDPASSWORD": "输入密码：",
+        "NEWPASSWORD": "输入新的密码：",
+        "CONFIRMPASSWD": "确认新的密码：",
+        "CONFIRMPASSWDTIP": "两次输入的新密码不同!",
+        "SUBMIT": "确 认",
+        "CANCEL": "取 消"
+      },
+      "step2": {
+        "HEADER": "完 成",
+        "TIP": "修改成功，请重新登录！",
+        "SUBMIT": "重 新 登 录"
+      }
+    },
+    "service": {
+      "instanceinfo": {
+        "ENABLE": "启 用",
+        "DISABLE": "停 用",
+        "CREATE": "创建新实例",
+        "INSTANCENAME": "实例名称:",
+        "APPLYTYPE": "购买类型:",
+        "APPLYTYPETRIAL": "试 用",
+        "APPLYTYPEOFFICIAL": "正 式",
+        "ACCESSURL": "访问路径:",
+        "CREATETIME": "创建时间:",
+        "EXPIRETIME": "到期时间:"
+      },
+      "ACCESSINFO": "访问统计信息",
+      "accesskeymanage": {
+        "HEADER": "AccessKey管理",
+        "STATUS": "状 态",
+        "ENABLE": "启 用",
+        "DISABLE": "禁 用",
+        "DELETE": "删 除",
+        "CREATE": "新 建"
+      }
+    },
+    "servicetrial": {
+      "TRIAL": "试用",
+      "INSTANCENAME": "实例名称:",
+      "SUBMIT": "确 认",
+      "CANCEL": "取 消"
+    }
+  },
+  "error": {
+    "ERROR" :"错误",
+    "REQUESTERROR": "请求错误",
+    "EMAILNOTAVAILABLE": "此邮箱已被注册",
+    "SERVERERROR": "服务器出错",
+    "SERVERDISCONNECT": "无法连接服务器",
+    "TRIALFAILED": "申请失败，试用次数已达上限",
+    "GETUSERINFOFAILED": "获取用户信息失败",
+    "NICKNAMEFORMAT": "昵称格式不合法",
+    "NICKNAMEBEENUSED": "昵称已被使用",
+    "PHONEERROR": "手机号码错误",
+    "PHONEHINT": "请输入11位手机号码",
+    "PHONEBEENUSED": "手机号码已被使用",
+    "INFOFORMAT": "信息格式非法",
+    "INFOINPUT": "填写信息有误",
+    "OLDPASSWORDERROR": "原密码错误",
+    "NOPASSWORD": "请输入密码",
+    "NEWPASSWORDFORMAT": "新密码格式错误，请重新输入",
+    "PWSAME": "新密码和旧密码不能相同，请重新输入",
+    "ACCESSKEYLIMIT": "数量最多为5，无法继续新建"
+  },
+  "success": {
+    "TRIAL": "试用申请成功",
+    "CHECKNICKNAME": "昵称可用",
+    "CHECKPHONE": "手机号码可用",
+    "SAVE": "保存成功！"
+  }
+}

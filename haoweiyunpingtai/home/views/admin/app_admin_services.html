@@ -1,0 +1,191 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.settings.hideAside = false;
+  app.settings.hideFooter = true;
+  " ng-controller="AdminServicesCtrl">
+
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+      <div class="wrapper-xs b-b">
+        <div class="input-group m-b-xxs">
+          <span class="input-group-addon input-sm no-border no-bg">
+            <i class="icon-magnifier text-md m-t-xxs"></i>
+          </span>
+          <input type="text"
+                 class="form-control input-sm no-border no-bg text-md"
+                 placeholder="搜索所有服务"
+                 ng-model="query">
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="m-t-n-xxs">
+              <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                <a ng-repeat="serviceItem in services | filter:query | orderBy:'name'"
+                   class="list-group-item m-l"
+                   ng-class="{'select m-l-none': serviceItem.selected }"
+                   ng-click="selectServiceItem(serviceItem)">
+                  <span class=" block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': serviceItem.selected }">
+                    {{ serviceItem.name }}
+                    <span ng-hide="serviceItem.name">无效服务名</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center pos-abt w-full"
+                 style="top:50%;"
+                 ng-hide="(services | filter:query).length">暂无服务
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t text-center">
+        <a href class="btn btn-sm btn-default btn-addon" ng-click="createService()">
+          <i class="fa fa-plus fa-fw m-r-xs"></i>
+          创建新服务
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+
+
+  <!-- column -->
+  <div class="col bg-white-only">
+    <div class="">
+      <div class="">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="wrapper-lg">
+              <div class="hbox h-auto m-b-lg">
+                <div class="col text-center w-sm"></div>
+                <div class="col v-middle h1 font-thin">
+                  <div ng-hide="serviceItem.editing">{{serviceItem.name}}</div>
+                  <div ng-show="serviceItem.editing">
+                    <input type="text"
+                           placeholder="服务名"
+                           class="form-control w-xxl input-lg m-b-n-xxs font-bold"
+                           ng-model="serviceItem.name">
+                  </div>
+                </div>
+              </div>
+              <!-- fields -->
+              <div class="form-horizontal">
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.desc && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">简介</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="serviceItem.editing">{{serviceItem.desc}}</p>
+                    <input type="text" class="form-control" ng-show="serviceItem.editing" ng-model="serviceItem.desc">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.accessType && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">访问方式</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="serviceItem.editing">{{serviceItem.accessType}}</p>
+                    <input type="text"
+                           class="form-control"
+                           ng-show="serviceItem.editing"
+                           ng-model="serviceItem.accessType">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.accessUrl && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">访问路径</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="serviceItem.editing">{{serviceItem.accessUrl}}</p>
+                    <input type="text"
+                           class="form-control"
+                           ng-show="serviceItem.editing"
+                           ng-model="serviceItem.accessUrl">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.publishState && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">发布状态</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static"
+                       ng-hide="serviceItem.editing">{{serviceItem.publishState == 'PUBLISHED' ? '已发布':'未发布'}}
+                    </p>
+                    <input type="text"
+                           class="form-control"
+                           ng-show="serviceItem.editing"
+                           ng-model="serviceItem.publishState">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.createTime && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">创建时间</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static"
+                       ng-hide="serviceItem.editing">{{serviceItem.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                    </p>
+                    <input type="text"
+                           class="form-control"
+                           ng-show="serviceItem.editing"
+                           ng-model="serviceItem.createTime">
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" ng-hide="!serviceItem.remark && !serviceItem.editing">
+                  <label class="col-sm-3 control-label">备注</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" ng-hide="serviceItem.editing">{{serviceItem.remark}}</p>
+                    <textarea class="form-control"
+                              ng-show="serviceItem.editing"
+                              ng-model="serviceItem.remark"
+                              rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- / fields -->
+            </div>
+            <div class="line b-b line-lg "></div>
+            <div class="panel m-l-xxl panel-default no-border">
+              <div class="panel-body m-l-xxl">
+                <table class="table m-b-none w-modify">
+                  <thead class="">
+                  <tr>
+                    <th class="w-sm">方法名</th>
+                    <th class="w-lg">APPId</th>
+                  </tr>
+                  </thead>
+                  <tbody class="no-line"
+                         ng-repeat="functionInfo in serviceItem.functionMap track by $index"
+                         ng-init="hideRows=true;">
+                  <tr ng-click="hideRows=!hideRows">
+                    <td class="text-limit">{{functionInfo.accessUrl}}</td>
+                    <td class="text-limit">{{functionInfo.desc}}</td>
+                    <td class="text-limit">
+                      <i class="fa {{hideRows?'fa-angle-right':'fa-angle-down'}} " ng-click="hideRows=!hideRows"></i>
+                    </td>
+                  </tr>
+                  <tr ng-hide="hideRows" class="bg-light">
+                    <th>
+                      <label class="m-l-md text-limit  color1">参数名</label>
+                    </th>
+                    <th>
+                      <label class="m-l-md text-limit  color1">描述</label>
+                    </th>
+                  </tr>
+                  <tr ng-repeat="parameterInfo in functionInfo.parameterMap track by $index" ng-hide="hideRows">
+                    <td>
+                      <label class="m-l-md text-limit color1">{{parameterInfo.name}}</label>
+                    </td>
+                    <td>
+                      <label class="m-l-md text-limit color1">{{parameterInfo.desc}}</label>
+                    </td>
+                  </tr>
+                  <!--<tr ng-hide="serviceItem.functionMap.length"><td class="text-limit w-md">暂无方法</td></tr>-->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div><!-- /hbox layout -->

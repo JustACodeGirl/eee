@@ -1,0 +1,199 @@
+<div class="hbox hbox-auto-xs h-full" ng-init="
+  app.settings.asideFixed = false;
+  app.settings.asideFolded = (app.clientWidth <= 1280);
+  app.settings.container = false;
+  app.hideFooter = true;
+  ">
+  <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AbnTestController" ng-init="showDetail=false;">
+    <div class="col w-lg bg-light b-r bg-auto">
+      <div class="wrapper-md">
+        <div class="b-a bg-light dk r r-2x">
+          <span ng-if="doing_async">...loading...</span>
+          <abn-tree tree-data="my_data"
+                    tree-control="my_tree"
+                    on-select="my_tree_handler(branch)"
+                    expand-level="2"
+                    initial-selection="{{selectedPaidServiceId}}-0"
+                    icon-leaf="fa fa-file-o"
+                    icon-expand="fa fa-plus"
+                    icon-collapse="fa fa-minus"></abn-tree>
+        </div>
+      </div>
+    </div>
+    <div class="m-t-md m-l-xxl m-r-xxl">
+      <div class="panel panel-default">
+        <div class="panel-heading clickable" ng-click="showDetail != showDetail">
+          <a class="btn btn-xs btn-info pull-left"
+             ui-sref="app.service_trial({id:selectedUnpaidServiceId,name:selectedUnpaidServiceName})"
+             ng-bind="'main.service.instanceinfo.CREATE'|T"
+             ng-click="$event.stopPropagation();">创建新实例
+          </a>
+          <a class="btn btn-xs btn-info pull-right">
+            <i class="fa" ng-class="{true:'fa-minus', false:'fa-plus'}[showDetail]"/>
+          </a>
+          <div class="btn-group pull-right w-sm m-r-n-lg"
+               ng-init="radioModel = instancesInfo[instanceIndex].activeState">
+            <label class="btn btn-xs {{instancesInfo[instanceIndex].activeState == 'ACTIVE' ? 'btn-info active' : 'btn-default'}}"
+                   ng-model="radioModel"
+                   btn-radio="ACTIVE"
+                   ng-click="changeInstanceState(true); $event.stopPropagation();">
+              <i class="fa fa-check text-active"></i>
+              <span ng-bind="'main.service.instanceinfo.ENABLE'|T">启 用</span>
+            </label>
+            <label class="btn btn-xs {{instancesInfo[instanceIndex].activeState == 'INACTIVE' ? 'btn-info active' : 'btn-default'}}"
+                   ng-model="radioModel"
+                   btn-radio="INACTIVE"
+                   ng-click="changeInstanceState(false); $event.stopPropagation();">
+              <i class="fa fa-check text-active"></i>
+              <span ng-bind="'main.service.instanceinfo.DISABLE'|T">停 用</span>
+            </label>
+          </div>
+          <a class="text-left m-l-md center-block text-center text-md" ng-bind="instanceName"></a>
+        </div>
+        <div class="panel-body" ng-hide="!showDetail">
+          <div class="col-lg-12 text-left">
+            <div class="form-group">
+              <label class="col-lg-4 control-label" ng-bind="'main.service.instanceinfo.INSTANCENAME'|T">实例名称:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit" ng-bind="instancesInfo[instanceIndex].name"></p>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">APPId:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit" ng-bind="instancesInfo[instanceIndex].appId"></p>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label" ng-bind="'main.service.instanceinfo.APPLYTYPE'|T">购买类型:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit"
+                   ng-bind="(instancesInfo[instanceIndex].applyType == 'TRIAL' ? 'main.service.instanceinfo.APPLYTYPETRIAL':'main.service.instanceinfo.APPLYTYPEOFFICIAL')|T">
+                  试 用
+                </p>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label" ng-bind="'main.service.instanceinfo.ACCESSURL'|T">访问路径:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit" ng-bind="paidServices[serviceIndex].accessUrl"></p>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label" ng-bind="'main.service.instanceinfo.CREATETIME'|T">创建时间:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit"
+                   ng-bind="instancesInfo[instanceIndex].createTime | date:'yyyy-MM-dd HH:mm:ss'"></p>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label" ng-bind="'main.service.instanceinfo.EXPIRETIME'|T">到期时间:</label>
+              <div class="col-lg-8">
+                <p class="form-control-static m-t-n-xs text-limit"
+                   ng-bind="instancesInfo[instanceIndex].expireTime | date:'yyyy-MM-dd HH:mm:ss'"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-t-md m-l-xxl m-r-xxl">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span ng-bind="'main.service.ACCESSINFO'|T">访问统计信息</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jq="plot" ui-refresh="instanceStats" ui-options="
+          [
+            { data: {{instanceStats}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+          ],
+          {
+            colors: ['#23b7e5'],
+            series: { shadowSize: 3 },
+            xaxis:{
+              font: { color: '#aaa' },
+              position: 'bottom',
+              ticks: [
+                [ 1, 'Jan' ], [ 2, 'Feb' ], [ 3, 'Mar' ], [ 4, 'Apr' ], [ 5, 'May' ], [ 6, 'Jun' ], [ 7, 'Jul' ], [ 8, 'Aug' ], [ 9, 'Sep' ], [ 10, 'Oct' ], [ 11, 'Nov' ], [ 12, 'Dec' ]
+              ]
+            },
+            yaxis:{ font: { color: '#aaa' } },
+            grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+            tooltip: true,
+            tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+          }
+        " style="height:240px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="m-t-md m-l-xxl m-r-xxl" ng-controller="AccessKeyCtrl">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span ng-bind="'main.service.accesskeymanage.HEADER'|T">AccessKey管理</span>
+        </div>
+        <div>
+          <table class="table keytable m-b-none tablet">
+            <thead>
+            <tr>
+              <th class="keytable-td-w">
+                AccessToken
+              </th>
+              <th class="keytable-td-w">
+                AccessKey
+              </th>
+              <th data-hide="phone" ng-bind="'main.service.accesskeymanage.STATUS'|T">
+                状态
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="keyInfo in keyInfos track by $index">
+              <td class="keytable-td-w" ng-bind="keyInfo.accessToken"></td>
+              <td class="keytable-td-w" ng-bind="keyInfo.accessKey"></td>
+              <td>
+                <div class="btn-group" ng-init="radioModel = keyInfo.active">
+                  <label class="btn btn-xs"
+                         ng-class="{true:'btn-info active', false:'btn-default'}[keyInfo.active]"
+                         ng-model="radioModel"
+                         btn-radio="true"
+                         ng-click="changeKeyStaus(true, keyInfo)">
+                    <i class="fa fa-check text-active"></i>
+                    <span ng-bind="'main.service.accesskeymanage.ENABLE'|T">启 用</span>
+                  </label>
+                  <label class="btn btn-xs"
+                         ng-class="{true:'btn-default', false:'btn-info active'}[keyInfo.active]"
+                         ng-model="radioModel"
+                         btn-radio="false"
+                         ng-click="changeKeyStaus(false, keyInfo)">
+                    <i class="fa fa-check text-active"></i>
+                    <span ng-bind="'main.service.accesskeymanage.DISABLE'|T">禁 用</span>
+                  </label>
+                </div>
+                <label class="btn btn-xs btn-danger" ng-click="deleteKey(keyInfo)">
+                  <i class="fa fa-check text-active"></i>
+                  <span ng-bind="'main.service.accesskeymanage.DELETE'|T">删 除</span>
+                </label>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="5" class="text-center">
+                <label class="btn btn-default" ng-click="createNewAccessKey()" onclick="">
+                  <span ng-bind="'main.service.accesskeymanage.CREATE'|T">新 建</span>
+                  AccessKey
+                </label>
+              </td>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = false;
+  ">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <!--<h1 class="m-n font-thin h3 text-black">豪威科技云平台</h1>
+          <small class="text-muted">欢迎来到豪威科技云平台用户中心</small>-->
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md">
+      <!-- stats -->
+      <div class="row">
+        <div class="col-md-12 m-b-md">
+          <div style="background: #fff center center; background-size:cover">
+            <div class="wrapper-lg bg-white-opacity">
+              <div class="row m-t">
+                <div class="col-sm-7">
+                  <a href="" class="thumb-lg pull-left m-r">
+                    <img src="/resource/img/a0.jpg" class="img-circle">
+                  </a>
+                  <div class="clear m-b">
+                    <div class="m-b m-t-sm">
+                      <a class="h3 text-black" ng-bind="app.userInfo.nickName"></a>
+                      <a class="m-l"
+                         ng-class="{true:'small', false:'h3'}[app.userInfo.nickName]"
+                         ng-bind="app.userInfo.email"></a>
+                    </div>
+                  </div>
+                  <span class="h4 m-l-md" ng-bind="'main.usercenter.WELCOME'|T">欢迎使用豪威云平台</span>
+                </div>
+                <div class="col-sm-5">
+                  <div class="pull-right pull-none-xs text-center">
+                    <a href="" class="m-b-md inline m">
+                      <span class="h3 block font-bold">0</span>
+                      <h4 ng-bind="'main.usercenter.NOTIFY'|T">通 知</h4>
+                    </a>
+                    <a href="" class="m-b-md inline m">
+                      <span class="h3 block font-bold">￥0.00</span>
+                      <h4 ng-bind="'main.usercenter.BALANCE'|T">余 额</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="panel padder-v item padder-lg">
+            <span class="text-black font-thin" ng-bind="'main.usercenter.SERVICEUSE'|T">使用中的服务</span>
+            <li class="line dk bg-light"></li>
+            <div class="row row-sm">
+              <div class="col-xs-4" ng-repeat="service in app.paidServices">
+                <a class="block bg-light wrapper m-r-md m-b-md">
+                  <span ui-sref="app.service_instances({id:service.id})" ng-bind="service.name|T"></span>
+                  <span class="m-r pull-right"
+                        ui-sref="app.service_trial({id:service.id,name:service.name})"
+                        ng-bind="'main.usercenter.TRIAL'|T">试用
+                  </span>
+                  <span class="m-r pull-right"
+                        ui-sref="app.service_instances({id:service.id})"
+                        ng-bind="'main.usercenter.DETAIL'|T">详情
+                  </span>
+                </a>
+              </div>
+            </div>
+            <br>
+            <span class="text-black font-thin" ng-bind="'main.usercenter.SERVICENOTUSE'|T">未使用的服务</span>
+            <li class="line dk bg-light"></li>
+            <div class="row row-sm">
+              <div class="col-xs-4" ng-repeat="service in app.unpaidServices">
+                <a href="" class="block bg-light wrapper m-r-md m-b-md">
+                  <span ui-sref="app.page_noinstance({id:service.id,name:service.name})" ng-bind="service.name|T"></span>
+                  <span class=" m-r pull-right "
+                        ui-sref="app.service_trial({id:service.id,name:service.name})"
+                        ng-bind="'main.usercenter.TRIAL'|T">试用
+                  </span>
+                  <span class=" m-r pull-right "
+                        ui-sref="app.page_noinstance({id:service.id,name:service.name})"
+                        ng-bind="'main.usercenter.DETAIL'|T">详情
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / stats -->
+    </div>
+  </div>
+  <!-- / main -->
+</div>

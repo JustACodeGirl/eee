@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    .table td {
+      border: 1px solid black;
+      text-align: center;
+    }
+    .none td{
+      border-left:none;
+      border-top:none;
+    }
+  </style>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myController">
+  <table class="table" width="100%" border="0" cellspacing="0" id="contactTable">
+    <tr bgcolor="#339933" style="font-size: 18px;font-weight: bold;">
+      <td width="100px;">category</td>
+      <td width="250px;">description</td>
+      <td width="100px;">method</td>
+      <td>url</td>
+      <td>parameters
+        <table>
+          <tr border="none">
+            <td width="35%;">name</td>
+            <td width=70%">description</td>
+            <td width="100px;">required</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr  ng-repeat="data in datas">
+      <td>{{data.category}}</td>
+      <td>{{data.description}}</td>
+      <td>{{data.method}}</td>
+      <td>{{data.url}}</td>
+
+      <td>
+        <table cellspacing="0" cellpadding="0" margin="0" padding="0">
+          <tr class="none" ng-repeat="parameter in data.parameters">
+            <td width="30%">{{parameter.name}}</td>
+            <td width="100%;">{{parameter.description}}</td>
+            <td>{{parameter.required}}</td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</div>
+<script src="public/js/angular/angular.js"></script>
+<script>
+  var app = angular.module('myapp', []);
+  app.controller('myController', function ($scope, $http) {
+    $http.get("resource/json/api.json").success(function (response) {
+      $scope.datas = response;
+      console.log(response);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<div class="navbar-header bg-info">
+  <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+    <i class="glyphicon glyphicon-cog"></i>
+  </button>
+  <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+    <i class="glyphicon glyphicon-align-justify"></i>
+  </button>
+  <a href="/index.html" target="_blank" class="navbar-brand text-lt" title="{{'header.BACK'|T}}">
+    <i class="fa fa-cloud"></i>
+    <span class="hidden-folded m-l-xs" ng-bind="'header.APPNAME'|T"></span>
+  </a>
+</div>
+
+<div class="collapse pos-rlt navbar-collapse box-shadow bg-info">
+  <div class="nav navbar-nav hidden-xs">
+    <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+      <i class="fa fa-fw" ng-class="{true:'fa-indent', false:'fa-dedent'}[app.settings.asideFolded]"></i>
+    </a>
+  </div>
+  <div class="nav navbar-nav btn-info">
+    <a ui-sref="app.user_center_main" class="btn no-shadow navbar-btn" ng-bind="'header.USERCENTER'|T"> 用户中心</a>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle>
+        <span ng-bind="selectLang"></span>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu animated fadeInRight w">
+        <li ng-repeat="(langKey, label) in langs">
+          <a ng-click="setLang(langKey)" ng-bind="label"></a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown" dropdown="">
+      <a href="" class="dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+        <i class="icon-bell fa-fw"></i>
+        <span class="visible-xs-inline" ng-bind="'header.notify.NOTIFY'|T">通知</span>
+        <span class="badge badge-sm up bg-danger pull-right-xs" ng-bind="unReadNum" ng-hide="unReadNum <= 0">2</span>
+      </a>
+      <!-- dropdown -->
+      <div class="dropdown-menu w-xl animated fadeInUp">
+        <div class="panel bg-white">
+          <div class="panel-heading ">
+            <strong ng-bind="'header.notify.TITLE_START'|T">您有 </strong>
+            <strong ng-bind="unReadNum"></strong>
+            <strong ng-bind="'header.notify.NOTIFY'|T"> 通知</strong>
+          </div>
+          <div class="list-group" ng-repeat="message in unReadMessages | orderBy:'id':true | limitTo:3 ">
+            <a ui-sref="app.message.detail({messageId:message.id})" class="media list-group-item">
+              <span class="media-body block m-b-none text-limit" ng-bind="message.title"></span>
+              <span class="text-muted" ng-bind="message.createTime | date:'yyyy-MM-dd HH:mm:ss'"></span>
+            </a>
+          </div>
+          <div class="panel-footer text-sm">
+            <a ui-sref="app.message.list" class="w-full block" data-toggle="class:show animated fadeInRight">
+              <i class="fa fa-cog pull-right"></i>
+              <span ng-bind="'header.notify.SEE_ALL'|T">查看所有通知</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- / dropdown -->
+    </li>
+    <li class="dropdown" dropdown>
+      <a href class="dropdown-toggle clear" dropdown-toggle>
+        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+          <img src="../resource/img/a0.jpg" alt="...">
+          <i class="on md b-white bottom"></i>
+        </span>
+        <span class="hidden-sm hidden-md" ng-bind="app.userInfo.email"></span>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu animated fadeInRight w">
+        <li>
+          <a href>
+            <span ui-sref="app.user_info" ng-bind="'header.userinfo.USERCENTER'|T">个人中心</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="logout()" ng-bind="'header.userinfo.LOGOUT'|T">退出</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</div>

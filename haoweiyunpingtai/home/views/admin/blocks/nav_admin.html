@@ -1,0 +1,52 @@
+<ul class="nav">
+  <li ui-sref-active="active">
+    <a ui-sref="app.admin_users" class="auto">
+      <i class="icon-user icon text-success"></i>
+      <span class="font-bold">用户管理</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="app.admin_services" class="auto">
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold">服务管理</span>
+    </a>
+  </li>
+  <li>
+    <a class="auto">
+      <i class="fa fa-weixin icon text-success"></i>
+      <span class="font-bold">消息管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li>
+        <a ui-sref="app.admin_message_type" class="text-limit" title="">
+          消息类型
+        </a>
+      </li>
+      <li>
+        <a ui-sref="app.admin_message_send" class="text-limit" title="">
+          消息发布
+        </a>
+      </li>
+      <li>
+        <a ui-sref="app.admin_message_history" class="text-limit" title="">
+          发布记录
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a class="auto">
+      <i class="glyphicon glyphicon-tasks icon text-primary-dker"></i>
+      <span class="font-bold">管理工具
+      </span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li>
+        <a ui-sref="app.admin_management_tool" class="text-limit" title="">
+          缓存
+        </a>
+      </li>
+    </ul>
+  </li>
+
+</ul>

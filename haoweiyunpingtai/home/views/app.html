@@ -1,0 +1,14 @@
+<div data-ng-include="app.headerUrl" class="app-header navbar" ng-controller="HeaderCtrl"></div>
+
+<div data-ng-include="app.asideUrl"
+     class="app-aside hidden-xs bg-dark"
+     ng-class="{'hide': app.settings.hideAside }"
+     ></div>
+
+<div class="app-content" ng-class="{'m-n': app.settings.hideAside, 'h-full': app.settings.hideFooter }">
+  <div ui-butterbar></div>
+  <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside"></a>
+  <div class="app-content-body fade-in-up"
+       ng-class="{'h-full': app.settings.hideFooter, 'app-content-full': app.settings.hideFooter}"
+       ui-view></div>
+</div>

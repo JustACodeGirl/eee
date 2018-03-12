@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Omnivision Cloud</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../resource/img/favicon.png"/>
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="style/css/reset.css" rel="stylesheet">-->
+
+    <link href="../css/five.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="all"/>
+    <link href="../css/content.css" rel="stylesheet">
+    <link href="../css/sidebar.css" rel="stylesheet">
+    <link href="../css/iris.css" rel="stylesheet">
+    <!---->
+    <script src="../../public/js/compatible/modernizr.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery/jquery.min.js"></script>
+    <script src="../../public/js/serverurl.js"></script>
+    <script src="../../public/js/jquery/jquery.i18n.properties-1.0.9.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/userinfo.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var qcloud = {};
+            $('[_t_nav]').hover(function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').each(function () {
+                        $(this)[_nav == $(this).attr('_t_nav') ? 'addClass' : 'removeClass']('nav-up-selected');
+                    });
+                    $('#' + _nav).stop(true, true).slideDown(200);
+                }, 150);
+            }, function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').removeClass('nav-up-selected');
+                    $('#' + _nav).stop(true, true).slideUp(200);
+                }, 150);
+            });
+        });
+    </script>
+    <style>
+        .new-main{
+            position: absolute;
+            z-index:10;
+        }
+        h1{
+            font-size: 40px;
+            margin-left:430px;
+            color:#3537D7;
+            padding-top:200px;
+            margin-right: 488px;
+        }
+        p{
+            font-size: 16px;
+            font-weight:600;
+            color:rgb(143, 112, 145);
+        }
+        .p1{
+            margin-left:495px;
+            margin-top: 10px;
+        }
+        .p2{
+            margin-left:493px;
+        }
+        img{
+            position: absolute;
+            z-index:-1;
+            width:100%;
+            height: 200%;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="head">
+        <div class="navigation-up">
+            <div class="navigation-inner">
+                <div class="navigation w-title">
+                    <a href="javascript:;" translate-name="header_title">OmniVision Cloud</a>
+                </div>
+                <div class="navigation m-l">
+                    <ul>
+                        <li class="" _t_nav="home">
+                            <h2>
+                                <a href="../../index.html" translate-name="header_home">首页</a>
+                            </h2>
+                        </li>
+                        <li class="nav-up-selected-inpage" _t_nav="services">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_service">服务</a>
+                            </h2>
+                        </li>
+                        <li class="" _t_nav="developer">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_develop">开发者中心</a>
+                            </h2>
+                        </li>
+                        <li class="" _t_nav="appdownload">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_appDownload">APP下载</a>
+                            </h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navigation-narrow pull-right">
+                    <ul>
+                        <li _t_nav="language">
+                            <h2>
+                                <a href="javascript:;" id="currentLang">中文</a>
+                            </h2>
+                        </li>
+                    </ul>
+                    <div class="navigation-down-narrow" id="language" _t_nav="language" style="display: none;">
+                        <div>
+                            <h2>
+                                <a class="link" href="javascript:;" onclick="changeLang(this)">English</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation pull-right">
+                    <ul>
+                        <li _t_nav="login" id="userinfo">
+                            <h2 class="nousername">
+                                <a class="text-primary p-r nobackgroud" href="signup.html">
+                                    <span translate-name="header_signup">注册</span>
+                                </a>
+                                <span>|</span>
+                                <a class=" text-primary p-l nobackgroud" href="signin.html">
+                                    <span translate-name="header_signin">登录</span>
+                                </a>
+                            </h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-down">
+            <div id="product" class="nav-down-menu menu-3 menu-1" _t_nav="product" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 100px;">
+                        <dt>计算机与网络</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.compute1" href="http://down.admin5.com">云服务器</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.compute2" href="http://down.admin5.com">弹性Web引擎</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.compute3" href="http://down.admin5.com">负载均衡</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>存储与CDN</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.storage1" href="http://down.admin5.com">云数据库</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage2" href="http://down.admin5.com">NoSQL高速存储</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage4" href="http://down.admin5.com">对象存储服务(beta)</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage3" href="http://down.admin5.com">CDN</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>监控与安全</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring1" href="http://down.admin5.com">云监控</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring2" href="http://down.admin5.com">云安全</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring3" href="http://down.admin5.com">云拨测</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>数据分析</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.analysis1" href="http://down.admin5.com">腾讯云分析</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.analysis2" href="http://down.admin5.com">关键因子</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>开发者工具</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool1" href="http://down.admin5.com">移动加速</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool2" href="http://down.admin5.com">应用加固</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool3" href="http://down.admin5.com">信鸽推送</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>开发者服务</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.service1" href="http://down.admin5.com">安全认证服务</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.service2" href="http://down.admin5.com">域名备案</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="services" class="nav-down-menu menu-3 menu-1" _t_nav="services" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 380px;">
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.1" href="iris.html" translate-name="header_service_iris">虹膜识别
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.2" href="javascript:;" translate-name="header_service_car">智能车载
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.3"
+                               href="javascript:;"
+                               translate-name="header_service_home">智能家居
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.3"
+                               href="javascript:;"
+                               translate-name="header_service_gyroeye">陀螺眼
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="developer" class="nav-down-menu menu-3 menu-1" _t_nav="developer" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 500px;">
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.1" href="start.html" translate-name="header_develop_start">快速开始
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.2"
+                               href="sdkdownload.html"
+                               translate-name="header_develop_sdk">SDK下载
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="appdownload" class="nav-down-menu menu-3 menu-1" _t_nav="appdownload" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 480px;">
+                        <dt>Android</dt>
+                        <dd>
+                            <img src="../../resource/img/bootstrap.jpg" width="100px" height="100px"/>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>iOS</dt>
+                        <dd>
+                            <img src="../../resource/img/bootstrap.jpg" width="100px" height="100px"/>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linee"></div>
+    <div class="new-main">
+        <img src="../../resource/img/222.jpg" alt=""/>
+        <h1> </h1>
+        <p class="p1"></p>
+        <p class="p2"></p>
+    </div>
+</div>
+</div>
+</body>
+<script src="../js/iris.js"></script>
+<script src="../js/five.js"></script>
+</body>
+</html>

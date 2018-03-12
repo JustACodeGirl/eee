@@ -1,0 +1,24 @@
+<div class="container w-auto-xs m-t-md" style="width: 680px" ng-init="
+    app.settings.container = false;
+    ">
+  <div class="panel" ng-controller="ServicesDetailController">
+    <div class="wrapper-lg">
+      <img src="/resource/img/c0.jpg" class="img-full box-shadow-lg ">
+    </div>
+    <div class="wrapper-lg">
+      <h2 class="m-t-none">
+        <a ng-bind="selectedUnpaidServiceName|T"></a>
+      </h2>
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat.</p>
+      </div>
+      <div class="line line-lg b-b b-light"></div>
+      <div class="text-right">
+        <a ui-sref="app.service_trial({id:selectedUnpaidServiceId,name:selectedUnpaidServiceName})"
+           class="btn btn-info"
+           ng-bind="'main.servicetrial.TRIAL'|T">试 用
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

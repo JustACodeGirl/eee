@@ -1,0 +1,374 @@
+/*!
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+html{
+  /*height:100%;*/
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Microsoft YaHei", "SimHei", "黑体" !important;
+  /*height: 100%;*/
+  overflow-x: hidden;
+}
+
+.page {
+  width: 1280px;
+  margin: 0 auto;
+  /*background-color: rgba(234, 246, 255, 0.56);*/
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+}
+.page-noshadow {
+  width: 1280px;
+  margin: 0 auto;
+  /*background-color: rgba(234, 246, 255, 0.56);*/
+}
+.text-primary {
+  color: #fff;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+p.large {
+  font-size: 15px;
+}
+
+p.contact {
+  font-size: 15px;
+  margin: 30px auto;
+}
+
+.copyrights {
+  text-indent: -9999px;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-family: arial, 'hiragino sans gb', 'microsoft yahei', 'Simsun', sans-serif
+}
+
+li {
+  list-style: none
+}
+
+a:link, a:visited {
+  text-decoration: none
+}
+
+.nobackgroud {
+  background-color: transparent !important;
+}
+
+.hm2 {
+  font-size: 20px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-orange-border {
+  border: 3px solid rgba(255, 165, 0, 0.51);
+}
+
+.img-orange-green {
+  border: 3px solid rgba(72, 179, 185, 0.48);
+}
+
+.img-orange-blue {
+  border: 3px solid rgba(0, 0, 255, 0.45);
+}
+
+.img-orange-red {
+  border: 3px solid rgba(255, 0, 0, 0.49);
+}
+
+.p-t {
+  padding-top: 5px !important;
+}
+
+.p-r {
+  padding-right: 5px !important;
+}
+
+.p-b {
+  padding-bottom: 5px !important;
+}
+
+.p-l {
+  padding-left: 5px !important;
+}
+
+.w-title{
+  width: 20%;
+}
+
+.a-inline {
+  display: inline !important;
+}
+
+.head {
+  position: fixed;
+  z-index: 100;
+  min-width: 1280px;
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.head .navigation-inner {
+  margin: 0 auto;
+  width: 1170px;
+  position: relative
+}
+
+.navigation-up {
+  height: 60px;
+  background: #27303f
+}
+
+.navigation-up .m-l {
+  margin-left: 10%;
+}
+
+.navigation-up .navigation {
+  float: left;
+}
+
+.navigation-up .navigation > a {
+  color: #fff;
+  display: inline-block;
+  font: normal 20px/59px "microsoft yahei";
+  height: 60px;
+  padding: 0 25px;
+}
+
+.navigation-up .navigation ul {
+  float: left;
+}
+
+.navigation-up .navigation li {
+  float: left;
+  font: normal 16px/59px "microsoft yahei";
+  color: #fff
+}
+
+.navigation-up .navigation .nav-up-selected {
+  background: #344157
+}
+
+.navigation-up .navigation .nav-up-selected-inpage {
+  background: #202833
+}
+
+.navigation-up .navigation li h2 {
+  font-weight: normal;
+  padding: 0;
+  margin: 0
+}
+
+.navigation-up .navigation li h2 a {
+  padding: 0 25px;
+  color: #fff;
+  display: inline-block;
+  height: 60px;
+  font: normal 16px/59px "microsoft yahei";
+}
+
+.navigation-down {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+}
+
+.navigation-down .nav-down-menu {
+  width: 100%;
+  margin: 0;
+  background: #344157;
+  position: absolute;
+  top: 0px;
+}
+
+.navigation-down .nav-down-menu .navigation-down-inner {
+  margin: auto;
+  width: 1200px;
+  position: relative;
+}
+
+.navigation-down .nav-down-menu dl {
+  float: left;
+  margin: 18px 80px 18px 0
+}
+
+.navigation-down .menu-1 dl {
+  margin: 20px 80px 25px 0
+}
+
+.navigation-down .menu-1 dt {
+  font: normal 16px "microsoft yahei";
+  color: #f0f3f4;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #61789e;
+  margin-bottom: 10px
+}
+
+.navigation-down .menu-1 dd a {
+  color: #fff;
+  font: normal 14px/30px "microsoft yahei"
+}
+
+.navigation-down .menu-1 dd a:hover {
+  color: #60aff6
+}
+
+.navigation-down .menu-2 dd a, .navigation-down .menu-3 dd a {
+  color: #fff;
+  font: normal 16px "microsoft yahei"
+}
+
+.navigation-narrow {
+  float: left;
+}
+.navigation-narrow .nav-up-selected {
+  background: #344157
+}
+.navigation-narrow a{
+  padding: 0;
+  color: #fff;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  font: normal 10px/59px "microsoft yahei";
+}
+.navigation-down-narrow {
+  width: 100%;
+  margin: 0;
+  background: #344157;
+  position: relative;
+  top: 0px;
+}
+.navigation-down-narrow a:hover{
+  color: #60aff6 !important;
+}
+
+#login h2 a:hover {
+  color: #60aff6
+}
+
+.nousername {
+  background-color: #27303f !important;
+}
+
+.nousername a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  margin-top: 30px;
+  width: 1272px;
+  padding: 0;
+  margin-bottom: 30px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.profile {
+  background-color: #fff;
+  width: 288px;
+  float: left;
+  margin-right: 40px;
+  transition: 500ms;
+}
+
+.profile:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  margin-top: -10px;
+}
+
+.profile-right {
+  float: right;
+  margin: 0 0;
+}
+
+.profile .profile-text {
+  font-size: 16px;
+  height: 45px;
+}
+
+.bodertoporange {
+  border-top: 1px solid orange;
+}
+
+.bodertopgreen {
+  border-top: 1px solid green;
+}
+
+.bodertopblue {
+  border-top: 1px solid blue;
+}
+
+.bodertopred {
+  border-top: 1px solid red;
+}
+
+.profile .profile-btn {
+  margin-bottom: 20px;
+}
+
+.profile .profile-img,
+.profile .profile-text,
+.profile .profile-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer {
+  background: #3b3b3b;
+  padding: 1em 0;
+  width: 1280px;
+  margin: 0 auto;
+  color: white;
+  line-height: 1.6;
+}
+
+.footer h4 {
+  font-size: 17px;
+  padding: 0 0 5px;
+}
+
+.footer a {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.footer a:hover {
+  color: #60aff6;
+}
+
+.btn-default:hover {
+  background-color: #006cc3;
+  color: #fff;
+}

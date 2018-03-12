@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Omnivision Cloud</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../resource/img/favicon.png"/>
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="style/css/reset.css" rel="stylesheet">-->
+
+    <link href="../css/five.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="all"/>
+    <link href="../css/content.css" rel="stylesheet">
+    <link href="../css/sidebar.css" rel="stylesheet">
+    <link href="../css/iris.css" rel="stylesheet">
+    <!---->
+    <script src="../../public/js/compatible/modernizr.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery/jquery.min.js"></script>
+    <script src="../../public/js/serverurl.js"></script>
+    <script src="../../public/js/jquery/jquery.i18n.properties-1.0.9.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/userinfo.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var qcloud = {};
+            $('[_t_nav]').hover(function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').each(function () {
+                        $(this)[_nav == $(this).attr('_t_nav') ? 'addClass' : 'removeClass']('nav-up-selected');
+                    });
+                    $('#' + _nav).stop(true, true).slideDown(200);
+                }, 150);
+            }, function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').removeClass('nav-up-selected');
+                    $('#' + _nav).stop(true, true).slideUp(200);
+                }, 150);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="page">
+    <div class="head">
+        <div class="navigation-up">
+            <div class="navigation-inner">
+                <div class="navigation w-title">
+                    <a href="javascript:;" translate-name="header_title">OmniVision Cloud</a>
+                </div>
+                <div class="navigation m-l">
+                    <ul>
+                        <li class="" _t_nav="home">
+                            <h2>
+                                <a href="../../index.html" translate-name="header_home">首页</a>
+                            </h2>
+                        </li>
+                        <li class="nav-up-selected-inpage" _t_nav="services">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_service">服务</a>
+                            </h2>
+                        </li>
+                        <li class="" _t_nav="developer">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_develop">开发者中心</a>
+                            </h2>
+                        </li>
+                        <li class="" _t_nav="appdownload">
+                            <h2>
+                                <a href="javascript:;" translate-name="header_appDownload">APP下载</a>
+                            </h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navigation-narrow pull-right">
+                    <ul>
+                        <li _t_nav="language">
+                            <h2>
+                                <a href="javascript:;" id="currentLang">中文</a>
+                            </h2>
+                        </li>
+                    </ul>
+                    <div class="navigation-down-narrow" id="language" _t_nav="language" style="display: none;">
+                        <div>
+                            <h2>
+                                <a class="link" href="javascript:;" onclick="changeLang(this)">English</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation pull-right">
+                    <ul>
+                        <li _t_nav="login" id="userinfo">
+                            <h2 class="nousername">
+                                <a class="text-primary p-r nobackgroud" href="signup.html">
+                                    <span translate-name="header_signup">注册</span>
+                                </a>
+                                <span>|</span>
+                                <a class=" text-primary p-l nobackgroud" href="signin.html">
+                                    <span translate-name="header_signin">登录</span>
+                                </a>
+                            </h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-down">
+            <div id="product" class="nav-down-menu menu-3 menu-1" _t_nav="product" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 100px;">
+                        <dt>计算机与网络</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.compute1" href="http://down.admin5.com">云服务器</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.compute2" href="http://down.admin5.com">弹性Web引擎</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.compute3" href="http://down.admin5.com">负载均衡</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>存储与CDN</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.storage1" href="http://down.admin5.com">云数据库</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage2" href="http://down.admin5.com">NoSQL高速存储</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage4" href="http://down.admin5.com">对象存储服务(beta)</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.storage3" href="http://down.admin5.com">CDN</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>监控与安全</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring1" href="http://down.admin5.com">云监控</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring2" href="http://down.admin5.com">云安全</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.monitoring3" href="http://down.admin5.com">云拨测</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>数据分析</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.analysis1" href="http://down.admin5.com">腾讯云分析</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.analysis2" href="http://down.admin5.com">关键因子</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>开发者工具</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool1" href="http://down.admin5.com">移动加速</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool2" href="http://down.admin5.com">应用加固</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.devtool3" href="http://down.admin5.com">信鸽推送</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>开发者服务</dt>
+                        <dd>
+                            <a hotrep="hp.header.product.service1" href="http://down.admin5.com">安全认证服务</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.product.service2" href="http://down.admin5.com">域名备案</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="services" class="nav-down-menu menu-3 menu-1" _t_nav="services" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 380px;">
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.1" href="iris.html" translate-name="header_service_iris">虹膜识别
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.2" href="javascript:;" translate-name="header_service_car">智能车载
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.3"
+                               href="javascript:;"
+                               translate-name="header_service_home">智能家居
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.3"
+                               href="javascript:;"
+                               translate-name="header_service_gyroeye">陀螺眼
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="developer" class="nav-down-menu menu-3 menu-1" _t_nav="developer" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 500px;">
+                        <dd>
+                            <a class="link" hotrep="hp.header.solution.1" href="start.html" translate-name="header_develop_start">快速开始
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <a class="link"
+                               hotrep="hp.header.solution.2"
+                               href="sdkdownload.html"
+                               translate-name="header_develop_sdk">SDK下载
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="appdownload" class="nav-down-menu menu-3 menu-1" _t_nav="appdownload" style="display: none;">
+                <div class="navigation-down-inner">
+                    <dl style="margin-left: 480px;">
+                        <dt>Android</dt>
+                        <dd>
+                            <img src="../../resource/img/bootstrap.jpg" width="100px" height="100px"/>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>iOS</dt>
+                        <dd>
+                            <img src="../../resource/img/bootstrap.jpg" width="100px" height="100px"/>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linee"></div>
+    <div>
+        <div id="col-lg-3 bg ">
+            <div class="leftsidebar_box">
+                <!--<div class="line"></div>-->
+                <dl class="system_log">
+                    <dt onClick="changeImage()">
+                        <img src="../../resource/img/cloud_current.png">
+                        <span translate-name="iris_sidebar_iris">虹膜识别</span>
+                    </dt>
+                    <dd class="first_dd">
+                        <a href="#" translate-name="iris_sidebar_iris_1">介绍</a>
+                    </dd>
+                    <dd>
+                        <a href="#" translate-name="iris_sidebar_iris_2">优势</a>
+                    </dd>
+                </dl>
+                <dl class="channel">
+                    <dt>
+                        <img src="../../resource/img/cloud_current.png">
+                        <span translate-name="iris_sidebar_dem">产品演示</span>
+                    </dt>
+                    <dd class="first_dd">
+                        <a href="#" translate-name="iris_sidebar_dem_1">渠道主页</a>
+                    </dd>
+                    <dd>
+                        <a href="#" translate-name="iris_sidebar_dem_2">系统通知</a>
+                    </dd>
+                </dl>
+                <dl class="channel">
+                    <dt>
+                        <img src="../../resource/img/cloud_current.png">
+                        <span translate-name="iris_sidebar_str">产品架构</span>
+                    </dt>
+                    <dd class="first_dd">
+                        <a href="#" translate-name="iris_sidebar_str_1">渠道主页</a>
+                    </dd>
+                    <dd>
+                        <a href="#" translate-name="iris_sidebar_str_2">系统通知</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="main">
+            <div class="head-area">
+                <img class="head-area-bg" src="../../resource/img/iris_background.jpg"/>
+
+                <div class="head-area-b">
+                    <img class="icon" src="../../resource/img/iris_logo.png">
+
+                    <h2 translate-name="iris_iris">虹膜识别</h2>
+
+                    <div class="head-content">
+                        <p translate-name="iris_intro"> 基于眼睛中的虹膜进行身份识别 可应用于安防设备（如门禁等），以及有高度保密需求的场所</p>
+                    </div>
+                    <div class="head-operation">
+                        <a href="javascript:;" class="tc-btn tc-btn-1" translate-name="iris_btn" onclick="trial()"> 点击试用</a>
+                    </div>
+                </div>
+            </div>
+            <div class="featured_content" id="feature">
+                <div class="container1">
+                    <div class="row text-center">
+                        <h2 translate-name="iris_advantage">我们的优势</h2>
+
+                        <div class="col-md-3 feature_grid1">
+                            <i class="fa fa-cloud-download fa-3x"></i>
+                            <img src="../../resource/img/1.11.png" alt="Generic placeholder image">
+
+                            <h3 class="m_1" translate-name="iris_use">易用</h3>
+
+                            <p class="m_2" translate-name="iria_use_detail">绑定豪威云服务,用户就能够轻易的应用虹膜认证功能到他们的本地或者在线服务中</p>
+                        </div>
+                        <div class="col-md-3 feature_grid1">
+                            <i class="fa fa-shield fa-3x"></i>
+                            <img src="../../resource/img/1.311.png" alt="Generic placeholder image">
+
+                            <h3 class="m_1" translate-name="iris_privacy">隐私</h3>
+
+                            <p class="m_2" translate-name="iris_privacy_detail">用户的虹膜信息不会从本地装置中丢失，虹膜识别算法在可信环境中执行.</p>
+                        </div>
+                        <div class="col-md-3 feature_grid1">
+                            <i class="fa fa-flask fa-3x"></i>
+                            <img src="../../resource/img/1.4.png" alt="Generic placeholder image">
+
+                            <h3 class="m_1" translate-name="iris_security">安全</h3>
+
+                            <p class="m_2" translate-name="iris_security_detail">数据经过加密或签名，用access tokens隔离恶意应用程序，用TLS协议保护用户服务系统
+                            </p>
+                        </div>
+                        <div class="col-md-3 feature_grid1">
+                            <i class="fa fa-bar-chart fa-3x"></i>
+                            <img src="../../resource/img/1.32.png" alt="Generic placeholder image">
+
+                            <h3 class="m_1" translate-name="iris_standard">标准</h3>
+
+                            <p class="m_2" translate-name="iris_standard_detail">虹膜识别标准中和FIDO标准，易于融入FIDO系统</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="../js/iris.js"></script>
+<script src="../js/five.js"></script>
+</body>
+</html>

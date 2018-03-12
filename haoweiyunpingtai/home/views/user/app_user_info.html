@@ -1,0 +1,166 @@
+<div class="wrapper-md" ng-controller="UserInfoCtrl" ng-init="
+  app.settings.asideFixed = false;
+  app.settings.asideFolded = false;
+  app.settings.container = false;
+  app.hideFooter = false;
+  ">
+  <div class="panel panel-default ">
+    <div class="panel-heading font-bold" translate="main.userinfo.overview.HEADER">
+      信息概览
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <div class="col-lg-2 text-center">
+          <div class="avatar thumb-lg m-t">
+            <img src="../resource/img/a0.jpg" alt="...">
+          </div>
+        </div>
+        <div class="col-lg-10 text-left">
+          <div class="form-group m-t-n-xs">
+            <label class="col-lg-3 form-control-static control-label " translate="main.userinfo.overview.EMAIL">登录邮箱:
+            </label>
+            <div class="col-lg-6">
+              <p class="form-control-static " ng-bind="userInfo.email"></p>
+            </div>
+            <div class="col-lg-3">
+              <a class="text-color-href"
+                 ui-sref="access.modifypasswd"
+                 ng-bind="'main.userinfo.overview.MODIFYPASSWD'|T">修改密码
+              </a>
+            </div>
+          </div>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
+          <div class="form-group m-t-n-xs">
+            <label class="col-lg-3 form-control-static control-label" ng-bind="'main.userinfo.overview.NICKNAME'|T">用户昵称:
+            </label>
+            <div class="col-lg-9">
+              <p class="form-control-static " ng-bind="userInfo.nickName"></p>
+            </div>
+          </div>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
+          <div class="form-group m-t-n-xs">
+            <label class="col-lg-3 form-control-static control-label" ng-bind="'main.userinfo.overview.PHONE'|T">绑定手机:
+            </label>
+            <div class="col-lg-9">
+              <p class="form-control-static" ng-bind="userInfo.phone"></p>
+            </div>
+          </div>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
+          <div class="form-group m-t-n-xs">
+            <label class="col-lg-3 form-control-static control-label"
+                   ng-bind="'main.userinfo.overview.REGISTERTIME'|T">注册时间:
+            </label>
+            <div class="col-lg-9">
+              <p class="form-control-static" ng-bind="userInfo.createTime | date:'yyyy-MM-dd HH:mm:ss'"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default ">
+    <div class="panel-heading font-bold" ng-bind="'main.userinfo.basicinfo.HEADER'|T">
+      基本信息
+    </div>
+    <div class="panel-body">
+      <form name="form" class="form-horizontal form-validation">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">
+            <span class="m-l-xxl text-danger">*</span>
+            <span ng-bind="'main.userinfo.basicinfo.useridentity.NAME'|T">用户身份</span>
+          </label>
+          <div class="col-sm-9">
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="isCompany" value="0" ng-click="onRadioClick(0)">
+                <span ng-bind="'main.userinfo.basicinfo.useridentity.PERSONAL'|T">个人</span>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="isCompany" value="1" ng-click="onRadioClick(1)">
+                <span ng-bind="'main.userinfo.basicinfo.useridentity.COMPANY'|T">企业/政府（含企业、政府、事业单位、团体、组织）</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">
+            <span class="m-l-xxl text-danger">*</span>
+            <span ng-bind="'main.userinfo.basicinfo.NICKNAME'|T">用户昵称</span>
+          </label>
+          <div class="col-sm-4">
+            <input class="form-control w-lg"
+                   name="nickName"
+                   type="text"
+                   ng-model="userInfo.nickName"
+                   ng-blur="isNickNameInputOver = 1"
+                   ng-focus="isNickNameInputOver = 0"
+                   required>
+          </div>
+          <div class="col-sm-3">
+            <span ng-class="{true:'text-info', false:'text-danger'}[isNickNameCheckProp]"
+                  ng-bind="nickNameCheckStr"></span>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">
+            <span class="m-l-xxl text-danger">*</span>
+            <span ng-bind="'main.userinfo.basicinfo.PHONE'|T">手机号码</span>
+          </label>
+          <div class="col-sm-4">
+            <input type="text"
+                   class="form-control w-lg"
+                   name="phone"
+                   ng-maxlength="11"
+                   ng-minlength="11"
+                   ng-model="userInfo.phone"
+                   ng-blur="isPhoneInputOver = 1"
+                   ng-focus="isPhoneInputOver = 0"
+                   required>
+          </div>
+          <div class="col-sm-3">
+            <span ng-class="{true:'text-info', false:'text-danger'}[isPhoneCheckProp]" ng-bind="phoneCheckStr"></span>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in" ng-hide="!isCompany"></div>
+        <div class="form-group" ng-hide="!isCompany">
+          <label class="col-sm-3 control-label">
+            <span class="m-l-xxl text-danger">*</span>
+            <span ng-bind="'main.userinfo.basicinfo.COMPANYNAME'|T">单位名称</span>
+          </label>
+          <div class="col-sm-8">
+            <input class="form-control w-lg" name="companyName" type="text" ng-model="userInfo.companyName" required>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in" ng-hide="!isCompany"></div>
+        <div class="form-group" ng-hide="!isCompany">
+          <label class="col-sm-3 control-label">
+            <span class="m-l-xxl text-danger">*</span>
+            <span ng-bind="'main.userinfo.basicinfo.COMPANYWEBSITE'|T">单位网址</span>
+          </label>
+          <div class="col-sm-8">
+            <input class="form-control w-lg"
+                   name="companyWebsite"
+                   type="text"
+                   ng-model="userInfo.companyWebsite"
+                   required>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <div class="col-sm-4 col-sm-offset-3">
+            <button type="submit"
+                    class="btn btn-success"
+                    ng-click="saveUserInfo([form.$invalid, form.phone.$invalid])"
+                    ng-bind="'main.userinfo.basicinfo.SUBMIT'|T">
+              保&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div ng-controller="MessageListCtrl" ng-init="
+  app.settings.asideFolded = (app.clientWidth <= 1280);
+">
+  <!--<div class="wrapper bg-light lter b-b">
+    <div>
+      <ul class="nav nav-pills">
+        <li >
+          <a>全部消息类型</a>
+        </li>
+        <li>
+          <a>服务消息</a>
+        </li>
+        <li>
+          <a>用户消息</a>
+        </li>
+        <li>
+          <a>安全消息</a>
+        </li>
+        <li>
+          <a>故障消息</a>
+        </li>
+      </ul>
+    </div>
+  </div>-->
+  <div class="wrapper b-b">
+    <span class="b-l b-l-2x b-l-info padder" ng-bind="title"></span>
+  </div>
+
+  <div class="wrapper">
+    <table class="table table-hover message-table panel panel-default">
+      <thead class="panel-heading">
+      <tr>
+        <th width="10">
+          <input type="checkbox"
+                 ng-model="selectAll"
+                 ng-change="changeSelectionAll({data: (messages | filter:fold)})">
+        </th>
+        <th class="state-colnum"></th>
+        <th class="title-colnum">标题内容</th>
+        <th class="">接收时间</th>
+        <th class="">消息类型</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="message in messages | filter:fold | orderBy:'id':true | limitTo:15" >
+        <td width="10">
+          <input type="checkbox" ng-model="message.selected" ng-change="changeSelection()">
+        </td>
+        <td class="state-colnum">
+          <i class="fa icon pull-left" ng-class="foldClass(message.fold)"></i>
+        </td>
+        <td class="title-colnum">
+          <a ui-sref="app.message.detail({messageId:message.id})" class="text-md" ng-bind="message.title"></a>
+        </td>
+        <td class="text-muted" ng-bind="message.createTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
+        <td class="text-muted" ng-bind="message.catagoryName"></td>
+      </tr>
+      <tr ng-hide="(messages | filter:fold).length">
+        <td colspan="4" height="100">
+          <span class="text-md block text-center">暂无消息</span>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td width="10">
+          <input type="checkbox"
+                 ng-model="selectAll"
+                 ng-change="changeSelectionAll({data: (messages | filter:fold)})">
+        </td>
+        <td colspan="4">
+          <div class="pull-left">
+            <a class="btn btn-default" ng-disabled="!havaSelected" ng-click="delMessage()">删除</a>
+            <a class="btn btn-default" ng-disabled="!havaSelected" ng-click="markRead()">标记为已读</a>
+          </div>
+          <div class="pull-right m-r-md">
+            <div class="pagination-info">
+              <span>共有
+                <span ng-bind="(messages | filter:fold).length"></span>
+                条
+              </span>
+              <!--<span>每页显示15条</span>-->
+            </div>
+            <!--<button type="button" class="btn btn-sm btn-bg btn-default" ng-click="prePage()">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <a>第
+              <span ng-bind="page"></span>
+              页, 共
+              <span ng-bind="totalPages"></span>
+              页
+            </a>
+            <button type="button" class="btn btn-sm btn-bg btn-default" ng-click="nextPage()">
+              <i class="fa fa-chevron-right"></i>
+            </button>-->
+          </div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

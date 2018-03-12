@@ -1,0 +1,158 @@
+{
+  "虹膜认证": "Iris Auth.",
+  "智能家居": "Smart Home",
+  "智能车载": "Smart Car",
+  "header": {
+    "APPNAME": "OvCloud",
+    "BACK": "back to index",
+    "USERCENTER": "User Center",
+    "admin": {
+      "TITLE": "Administrator Center",
+      "LOGOUT": "Logout"
+    },
+    "notify": {
+      "NOTIFY": "Notifications",
+      "TITLE_START": "You have",
+      "SEE_ALL": "See all the notifications"
+    },
+    "userinfo": {
+      "USERCENTER": "User Information",
+      "LOGOUT": "Logout"
+    }
+  },
+  "nav": {
+    "services": {
+      "TITLE": "Services"
+    },
+    "user": {
+      "TITLE": "User",
+      "USERINFO": "User Infomation",
+      "MESSAGECENTER": "Message Center"
+    },
+    "admin": {
+      "servicesmanage": {
+        "TITLE": "Services Manage"
+      },
+      "usermanage": {
+        "TITLE": "User Manage"
+      },
+      "managetool": {
+        "TITLE": "Manage Tools",
+        "CACHE": "Cache",
+        "TYPE":"Message Type"
+      }
+    }
+  },
+  "main": {
+    "usercenter": {
+      "WELCOME": "Welcome to use Omnivision Cloud!",
+      "NOTIFY": "Notify",
+      "BALANCE": "Balance",
+      "SERVICEUSE": "Services In Use",
+      "SERVICENOTUSE": "Services Not In Use",
+      "DETAIL": "Detail",
+      "TRIAL": "Trial"
+    },
+    "userinfo": {
+      "overview": {
+        "HEADER": "OverView",
+        "EMAIL": "Email Address:",
+        "MODIFYPASSWD": "Modify Password",
+        "NICKNAME": "Nick Name:",
+        "PHONE": "Phone Number:",
+        "COMPANYNAME": "Company Name:",
+        "COMPANYWEBSITE": "Company Website:",
+        "REGISTERTIME": "Register Time:"
+      },
+      "basicinfo": {
+        "HEADER": "Basic Infomation",
+        "useridentity": {
+          "NAME": "User Identity:",
+          "PERSONAL": "Personal",
+          "COMPANY": "Company"
+        },
+        "NICKNAME": "Nick Name:",
+        "PHONE": "Phone Number:",
+        "COMPANYNAME": "Company Name:",
+        "COMPANYNAMETIP": "",
+        "COMPANYWEBSITE": "Company Website:",
+        "SUBMIT": "Submit"
+      },
+      "BUSIINFO": "Business Infomation"
+    },
+    "modifypasswd": {
+      "TITLE": "Omnivision Cloud",
+      "step1": {
+        "HEADER": "Modify Password",
+        "TIP": "Please input the login password and a new password",
+        "OLDPASSWORD": "Old Password:",
+        "NEWPASSWORD": "New Password:",
+        "CONFIRMPASSWD": "Confirm Password:",
+        "CONFIRMPASSWDTIP": "Must match email address entered above",
+        "SUBMIT": "Submit",
+        "CANCEL": "Cancel"
+      },
+      "step2": {
+        "HEADER": "Complete",
+        "TIP": "Modify Password Success, <br><br>Please login again",
+        "SUBMIT": "Jump to Login"
+      }
+    },
+    "service": {
+      "instanceinfo": {
+        "ENABLE": "Enable",
+        "DISABLE": "Disable",
+        "CREATE": "Create Instance",
+        "INSTANCENAME": "Instance Name:",
+        "APPLYTYPE": "Apply Type:",
+        "APPLYTYPETRIAL": "Trial",
+        "APPLYTYPEOFFICIAL": "OFFICIAL",
+        "ACCESSURL": "Access Url:",
+        "CREATETIME": "Create Time:",
+        "EXPIRETIME": "Expire Time"
+      },
+      "ACCESSINFO": "Access Infomation",
+      "accesskeymanage": {
+        "HEADER": "AccessKey Management",
+        "STATUS": "Status",
+        "ENABLE": "Enable",
+        "DISABLE": "Disable",
+        "DELETE": "Delete",
+        "CREATE": "Create"
+      }
+    },
+    "servicetrial": {
+      "TRIAL": "Trial",
+      "INSTANCENAME": "Instance Name",
+      "SUBMIT": "Submit",
+      "CANCEL": "Cancel"
+    }
+  },
+  "error": {
+    "ERROR" :"Error",
+    "REQUESTERROR": "Request Error",
+    "EMAILNOTAVAILABLE": "Email has been used",
+    "SERVERERROR": "Server Error",
+    "SERVERDISCONNECT": "Server disconnect",
+    "TRIALFAILED": "Apply failed，trial time has reached its limit",
+    "GETUSERINFOFAILED": "Get user information failed",
+    "NICKNAMEFORMAT": "Nickname format illegal",
+    "NICKNAMEBEENUSED": "Nickname has been used",
+    "PHONEERROR": "Phone number error",
+    "PHONEHINT": "Please enter an available phone",
+    "PHONEBEENUSED": "Phone number has been used",
+    "INFOFORMAT": "Information format illegal",
+    "INFOINPUT": "Information input error",
+    "OLDPASSWORDERROR": "Old password wrong",
+    "NOPASSWORD": "Please input a password",
+    "NEWPASSWORDFORMAT": "New password format error",
+    "PWSAME": "New password could not be the same with the old",
+    "ACCESSKEYLIMIT": "Create failed, the number of accesskeys is limited to 5"
+  },
+  "success": {
+    "TRIAL": "Trial apply success",
+    "CHECKNICKNAME": "nick name is availalbe",
+    "CHECKPHONE": "phone number is availalbe",
+    "SAVE": "Save success!"
+  }
+}
